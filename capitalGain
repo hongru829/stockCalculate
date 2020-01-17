@@ -1,0 +1,63 @@
+
+#  buy price dic {x: numx, y: numy, z: numz}
+# sell price dic {q: numq, p: nump......}
+
+class CapitalGain(object):
+
+    def __init__(self):
+        pass
+
+    # base purchase x, numx
+    # second purchase y, numy
+    # first sell, z, numz
+
+    def get_capitial(self, x, numx, y, numy, z, numz, current_stock_price):
+
+        base_capital = x * numx
+
+        add_capital = y * numy
+
+        gain = z * numz - add_capital
+
+        total_capital = base_capital + add_capital
+
+        updated_stock_num = numx + numy - numz
+        user_invested_updated_capital = total_capital + gain - add_capital
+        stock_hold_capital = current_stock_price * updated_stock_num
+        average_cost_stock_price = user_invested_updated_capital / updated_stock_num
+
+        capital_gain_or_loss = current_stock_price * updated_stock_num - updated_stock_num * average_cost_stock_price
+
+        total_return = 0
+        total_return_percent = 0
+        if user_invested_updated_capital > stock_hold_capital:
+            total_return = user_invested_updated_capital - stock_hold_capital
+            total_return_percent = total_return / user_invested_updated_capital
+            total_return_percent = - total_return_percent
+        else:
+            total_return = stock_hold_capital - user_invested_updated_capital
+            total_return_percent = total_return / user_invested_updated_capital
+
+        print("this is initial totalCapital", total_capital)
+        print("user_invested_updated_capital", user_invested_updated_capital)
+        print("this is capital gain", capital_gain_or_loss)
+        print("what is average stock price", average_cost_stock_price)
+        print("stock_hold_capital", stock_hold_capital)
+        print("total_return_percent", total_return_percent)
+        print('total_return', total_return)
+
+
+    #   buy price dic {x: numx, y: numy, z: numz}
+    #   sell price dic {q: numq, p: nump......}
+    #   buy one time and sell one time
+
+    def get_capital_dic(self, x, num_x, buy_dic, sell_dic):
+
+
+        pass
+
+c = CapitalGain()
+c.get_capitial(100, 100, 98, 10, 99, 10, 101)
+
+
+
